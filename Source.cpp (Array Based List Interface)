@@ -1,0 +1,104 @@
+
+#include<iostream>
+#include<string>
+#include"ArrayList.h"
+using namespace std;
+int main() {
+//ListInterface* listPtr = new ArrayList();
+ArrayList list;
+int choice;
+int userNum;
+int position;
+char tryAgain = 'y';
+while (tryAgain == 'y' || tryAgain == 'Y') {
+system("cls");
+cout << "List operations using an array list" << endl;
+cout << "1. Insert" << endl;
+cout << "2. Remove" << endl;
+cout << "3. Clear" << endl;
+cout << "4. isEmpty" << endl;
+cout << "5. Get length" << endl;
+cout << "6. Get an entry at a given position" << endl;
+cout << "7. Set an entry at a given position" << endl;
+cout << "8. Display list" << endl;
+cout << "Enter a choice: ";
+cin >> choice;
+switch (choice)
+{
+case 1:
+cout << "Insert an integer at a specified position" << endl;
+cout << "What is the integer: ";
+cin >> userNum;
+cout << "In what position shall we place this entry: ";
+cin >> position;
+//if (listPtr->insert(position, userNum)) {
+if (list.insert(position, userNum)) {
+//cout << "Inserted " << listPtr->getEntry(position) << "
+at position " << position << endl;
+cout << "Inserted " << list.getEntry(position) << " at
+position " << position << endl;
+}
+else {
+cout << "Cannot insert " << userNum << " at position " <<
+position << endl;
+}
+break;
+case 2:
+cout << "Remove item in position: ";
+cin >> userNum;
+//listPtr->remove(userNum);
+list.remove(userNum);
+break;
+case 3:
+cout << "The list is cleared";
+//listPtr->clear();
+list.clear();
+break;
+case 4:
+//if (listPtr->isEmpty()) {
+if (list.isEmpty()) {
+cout << "The list is empty";
+}
+else {
+cout << "The list is not empty";
+}
+break;
+case 5:
+cout << "The number of items in the list is ";
+cout << list.getLength();
+//cout << listPtr->getLength();
+break;
+case 6:
+cout << "Get the entry at position ";
+cin >> userNum;
+cout << list.getEntry(userNum);
+//cout << listPtr->getEntry(userNum);
+break;
+case 7:
+cout << "Replace the number at position: ";
+cin >> position;
+cout << "What is the value: ";
+cin >> userNum;
+//listPtr->setEntry(position, userNum);
+list.setEntry(position, userNum);
+break;
+case 8:
+cout << "List contents: ";
+//for (int i = 0; i < listPtr->getLength(); i++)
+for (int i = 1; i <= list.getLength(); i++)
+{
+//cout << listPtr->getEntry(i) << " ";
+cout << list.getEntry(i) << " ";
+}
+break;
+default:
+break;
+}//end of switch
+cout << endl << "Try again (y/n): ";
+cin >> tryAgain;
+}//end of while
+//delete listPtr;
+//listPtr = nullptr;
+system("pause");
+return 0;
+}
